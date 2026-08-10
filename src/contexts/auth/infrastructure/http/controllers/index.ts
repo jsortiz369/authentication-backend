@@ -1,0 +1,13 @@
+export { AuthSingInController } from './auth-sing-in.controller';
+export { AuthSingUpController } from './auth-sing-up.controller';
+export { AuthSingUpCheckEmailController } from './auth-sing-up-check-email.controller';
+export { AuthSingUpCheckPhoneController } from './auth-sing-up-check-phone.controller';
+export { AuthSingUpCheckUsernameController } from './auth-sing-up-check-username.controller';
+export { AuthSingUpConfirmController } from './auth-sing-up-confirm.controller';
+export { AuthSingUpResendTokenConfirmController } from './auth-sing-up-resend-token-confirm.controller';
+export { AuthRecoverPasswordController } from './auth-recover-password.controller';
+export { AuthResetPasswordController } from './auth-reset-password.controller';
+export { AuthResetPasswordVerifyTokenController } from './auth-reset-password-verify-token.controller';
+export { AuthMeController } from './auth-me.controller';
+export { AuthLogoutController } from './auth-logout.controller';
+export { AuthRefreshTokenController } from './auth-refresh-token.controller';

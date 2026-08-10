@@ -1,0 +1,20 @@
+model User {
+    id              String      @db.Uuid @id @default(dbgenerated("gen_random_uuid()")) @map("_id")
+    names           String      @db.VarChar(50)
+    surnames        String      @db.VarChar(50)
+    username        String      @db.VarChar(20) @unique
+    phone           String      @db.VarChar(25) @unique
+    email           String      @db.VarChar(100) @unique
+    confirmed       Boolean     @db.Boolean @default(false)
+    status          Boolean     @db.Boolean @default(false)
+    failedAttempts  Int?        @db.SmallInt @default(0) @map("failed_attempts")
+    lockUntil       DateTime?   @db.Timestamp(3) @map("lock_until")
+    createdAt       DateTime    @db.Timestamp(3) @default(now()) @map("created_at")
+    updatedAt       DateTime    @db.Timestamp(3) @updatedAt @map("updated_at")
+    deletedAt       DateTime?   @db.Timestamp(3) @map("deleted_at")
+
+    passwords       UserPassword[]
+    sessions        UserSession[]
+    
+    @@map("users")
+}

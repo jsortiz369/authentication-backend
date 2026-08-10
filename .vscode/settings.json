@@ -1,0 +1,14 @@
+{
+  "prettier.printWidth": 150,
+  "prettier.tabWidth": 2,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "eslint.validate": ["typescript"],
+  "prettier.enable": true,
+  "eslint.enable": true,
+  "eslint.format.enable": true,
+  "editor.formatOnSave": true,
+  "[html]": {
+    "editor.tabSize": 4,
+    "editor.formatOnSave": false
+  }
+}

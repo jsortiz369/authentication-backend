@@ -1,0 +1,18 @@
+model UserSession {
+    id                  String      @db.Uuid @id @default(dbgenerated("gen_random_uuid()")) @map("_id")
+    userId              String      @db.Uuid @map("user_id")
+    refreshTokenHash    String      @db.VarChar(64)
+    ip                  String?     @db.VarChar(20)
+    browser             String?     @db.VarChar(255)
+    browserVersion      String?     @db.VarChar(255)
+    operatingSystem     String?     @db.VarChar(255)
+    device              String?     @db.VarChar(255)
+    expiresAt           DateTime    @db.Timestamp(3) @map("expires_at")
+    revokedAt           DateTime    @db.Timestamp(3) @map("revoked_at")
+    createdAt           DateTime    @db.Timestamp(3) @default(now()) @map("created_at")
+    updatedAt           DateTime    @db.Timestamp(3) @updatedAt @map("updated_at")
+
+    user                User        @relation(fields: [userId], references: [id], onDelete: Restrict, onUpdate: Restrict)
+
+    @@map("users_sesion")
+}
