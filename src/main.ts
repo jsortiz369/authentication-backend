@@ -25,7 +25,7 @@ declare module 'fastify' {
   }
 }
 
-async function bootstrap() {
+export async function bootstrap() {
   const app = await NestFactory.create<NestFastifyApplication>(AppModule, new FastifyAdapter());
 
   const _env$ = app.get<EnvRepository>(EnvRepository);
@@ -55,7 +55,7 @@ async function bootstrap() {
   app.enableCors({
     origin: [],
     methods: ['GET', 'POST', 'PATCH', 'PUT', 'DELETE'],
-    allowedHeaders: ['Content-Type', 'Timezone', 'Authorization'],
+    allowedHeaders: ['Content-Type'],
     credentials: true,
   });
 

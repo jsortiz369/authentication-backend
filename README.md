@@ -13,6 +13,7 @@ API REST de autenticación completa construida con **NestJS** sobre **Fastify**,
 - [Endpoints](#endpoints)
 - [Flujos principales](#flujos-principales)
 - [Instalación y ejecución](#instalación-y-ejecución)
+- [Docker](#docker)
 - [Documentación API](#documentación-api)
 
 ---
@@ -261,6 +262,88 @@ pnpm test:cov
 
 # E2E
 pnpm test:e2e
+```
+
+---
+
+## Docker
+
+El proyecto incluye soporte completo de Docker con un build multi-stage optimizado para producción.
+
+### Estructura
+
+| Archivo              | Descripción                                                 |
+| -------------------- | ----------------------------------------------------------- |
+| `Dockerfile`         | Build multi-stage (builder + production) con Node 24 Alpine |
+| `docker-compose.yml` | Orquesta la app + PostgreSQL 16 + Redis 7                   |
+| `.dockerignore`      | Excluye `node_modules`, `dist`, `.env`, logs                |
+
+### Levantar todo el entorno con Docker Compose
+
+```bash
+# Levantar todos los servicios (app + postgres + redis)
+docker compose up -d
+
+# Ver logs en tiempo real
+docker compose logs -f app
+
+# Detener todo
+docker compose down
+
+# Detener y eliminar volúmenes (⚠️ borra datos)
+docker compose down -v
+```
+
+### Solo infraestructura (desarrollo local)
+
+Si quieres correr la app en local pero necesitas PostgreSQL y Redis:
+
+```bash
+# Solo levanta postgres y redis
+docker compose up -d postgres redis
+
+# Luego en otra terminal:
+pnpm start:dev
+```
+
+### Build manual de la imagen
+
+```bash
+# Construir la imagen
+docker build -t auth-backend .
+
+# Ejecutar el contenedor
+docker run -p 8000:8000 --env-file .env auth-backend
+```
+
+### Variables de entorno con Docker Compose
+
+Docker Compose lee el `.env` automáticamente. Las variables relevantes son:
+
+| Variable         | Uso en Docker Compose                          |
+| ---------------- | ---------------------------------------------- |
+| `PORT`           | Puerto expuesto del contenedor (default: 8000) |
+| `DB_PORT`        | Puerto externo de PostgreSQL (default: 5432)   |
+| `DB_USERNAME`    | Usuario de PostgreSQL                          |
+| `DB_PASSWORD`    | Contraseña de PostgreSQL                       |
+| `DB_NAME`        | Nombre de la base de datos                     |
+| `REDIS_PORT`     | Puerto externo de Redis (default: 6379)        |
+| `REDIS_PASSWORD` | Contraseña de Redis (opcional)                 |
+
+### Healthchecks
+
+Los servicios de infraestructura incluyen healthchecks. La app no arranca hasta que PostgreSQL y Redis estén listos (`depends_on` con `condition: service_healthy`).
+
+### Migraciones en Docker
+
+Después de levantar los servicios, aplica las migraciones:
+
+```bash
+# Desde el host (con pnpm local)
+pnpm prisma migrate deploy
+
+# O dentro del contenedor
+docker compose exec app npx prisma migrate deploy
 ```
 
 ---
