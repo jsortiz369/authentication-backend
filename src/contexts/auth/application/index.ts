@@ -11,3 +11,5 @@ export * from './use-case/queries/auth-reset-password-verify-token';
 export * from './use-case/queries/auth-me';
 export * from './use-case/commands/auth-logout';
 export * from './use-case/commands/auth-refresh-token';
+export * from './use-case/queries/auth-sessions';
+export * from './use-case/commands/auth-revoke-session';

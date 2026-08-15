@@ -11,3 +11,5 @@ export { AuthResetPasswordVerifyTokenController } from './auth-reset-password-ve
 export { AuthMeController } from './auth-me.controller';
 export { AuthLogoutController } from './auth-logout.controller';
 export { AuthRefreshTokenController } from './auth-refresh-token.controller';
+export { AuthSessionsController } from './auth-sessions.controller';
+export { AuthRevokeSessionController } from './auth-revoke-session.controller';

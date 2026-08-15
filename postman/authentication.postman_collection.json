@@ -1,0 +1,362 @@
+{
+  "info": {
+    "_postman_id": "3ad8e673-ddfe-4272-a808-dc202e96151e",
+    "name": "authentication",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "19912056"
+  },
+  "item": [
+    {
+      "name": "auth",
+      "item": [
+        {
+          "name": "sing-in",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"username\": \"jogansmitho\",\r\n  \"password\": \"Jogan.0723\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{url}}/auth/sing-in",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "auth",
+                "sing-in"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "sing-up-check-username",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{url}}/auth/sing-up/check-username?username=prueba.prueba",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "auth",
+                "sing-up",
+                "check-username"
+              ],
+              "query": [
+                {
+                  "key": "username",
+                  "value": "prueba.prueba"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "sing-up-check-email",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{url}}/auth/sing-up/check-email?email=prueba@prueba.com",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "auth",
+                "sing-up",
+                "check-email"
+              ],
+              "query": [
+                {
+                  "key": "email",
+                  "value": "prueba@prueba.com"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "sing-up-check-phone",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{url}}/auth/sing-up/check-phone?phone=1234567890",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "auth",
+                "sing-up",
+                "check-phone"
+              ],
+              "query": [
+                {
+                  "key": "phone",
+                  "value": "1234567890"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "sing-up",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"names\": \"Jogan\",\r\n  \"surnames\": \"Ortiz Muñoz\",\r\n  \"username\": \"jogansmitho\",\r\n  \"phone\": \"1234567890\",\r\n  \"email\": \"jogansmitho@gmail.com\",\r\n  \"password\": \"Prueba.85\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{url}}/auth/sing-up",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "auth",
+                "sing-up"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "sing-up-confirm",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "PATCH",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"token\": \"071961\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{url}}/auth/sing-up/confirm",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "auth",
+                "sing-up",
+                "confirm"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "sing-up-resend-token-confirm",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{url}}/auth/sing-up/resend-token-confirm",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "auth",
+                "sing-up",
+                "resend-token-confirm"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "recover-password",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"username\": \"jogansmitho\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{url}}/auth/recover-password",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "auth",
+                "recover-password"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "reset-password",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"password\": \"Jogan.0723\",\r\n    \"token\": \"58acd337d1105a1548491bd7310dddb3a78e80183ed7114fecba7314f45f2be6\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{url}}/auth/reset-password",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "auth",
+                "reset-password"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "reset-password-verify-token",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{url}}/auth/reset-password-verify-token?token=4f2f034421c1b91121b82cd9da87b36b9c4369a2dd85ba3ea05a270e1865029b",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "auth",
+                "reset-password-verify-token"
+              ],
+              "query": [
+                {
+                  "key": "token",
+                  "value": "4f2f034421c1b91121b82cd9da87b36b9c4369a2dd85ba3ea05a270e1865029b"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "me",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{url}}/auth/me",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "auth",
+                "me"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "logout",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "{{url}}/auth/logout",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "auth",
+                "logout"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "refresh-token",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "{{url}}/auth/refresh-token",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "auth",
+                "refresh-token"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "url",
+      "value": ""
+    }
+  ]
+}

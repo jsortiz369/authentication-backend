@@ -51,6 +51,8 @@ import * as handlers from './application';
     controllers.AuthMeController,
     controllers.AuthLogoutController,
     controllers.AuthRefreshTokenController,
+    controllers.AuthSessionsController,
+    controllers.AuthRevokeSessionController,
   ],
   providers: [
     {
@@ -214,6 +216,16 @@ import * as handlers from './application';
         commandRepository: AuthCommandRepository,
       ) => new handlers.AuthRefreshTokenHandler(userFindOneById, crypto, jwt, cache, commandRepository),
       inject: [servicesUser.UserFindOneByIdService, CryptoRepository, JwtRepository, CacheRepository, AuthCommandRepository],
+    },
+    {
+      provide: handlers.AuthSessionsHandler,
+      useFactory: (queryRepository: AuthQueryRepository) => new handlers.AuthSessionsHandler(queryRepository),
+      inject: [AuthQueryRepository],
+    },
+    {
+      provide: handlers.AuthRevokeSessionHandler,
+      useFactory: (authRevokeSession: AuthRevokeSessionService) => new handlers.AuthRevokeSessionHandler(authRevokeSession),
+      inject: [AuthRevokeSessionService],
     },
   ],
 })
