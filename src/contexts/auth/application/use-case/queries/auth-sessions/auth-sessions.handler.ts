@@ -2,7 +2,7 @@ import { AuthQueryRepository } from 'src/contexts/auth/domain/ports/auth-query.r
 import { type AuthSessionProjection } from 'src/contexts/auth/domain/ports/auth-query.repository';
 import { AuthSessionsQuery } from './auth-sessions.query';
 
-interface SessionResponse extends AuthSessionProjection {
+export interface SessionResponse extends AuthSessionProjection {
   isCurrent: boolean;
 }
 
